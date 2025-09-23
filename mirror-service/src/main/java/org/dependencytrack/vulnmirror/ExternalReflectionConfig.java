@@ -19,13 +19,19 @@
 package org.dependencytrack.vulnmirror;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
+import io.csaf.schema.generated.Aggregator;
+import io.csaf.schema.generated.Csaf;
 import io.csaf.schema.generated.Provider;
+import io.csaf.schema.generated.ROLIEFeed;
 
 // This class is needed since the native build of the mirror-service does
-// not include the serializer for io.csaf.schema.generated.Provider.
+// not include the serializers for io.csaf.schema.generated.*.
 @RegisterForReflection(
         targets = {
-                Provider.class
+                Aggregator.class,
+                Csaf.class,
+                Provider.class,
+                ROLIEFeed.class
         }
 )
 public class ExternalReflectionConfig {
