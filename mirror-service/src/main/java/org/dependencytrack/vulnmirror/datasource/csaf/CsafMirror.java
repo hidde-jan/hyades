@@ -235,7 +235,7 @@ public class CsafMirror extends AbstractDatasourceMirror<CsafMirrorState> {
             provider = RetrievedProvider.fromUrlAsync(providerEntity.getUrl(), csafLoader).get();
         }
 
-        final var documentStream = provider.streamDocuments(since);
+        final var documentStream = provider.streamDocuments(since, csafLoader);
         documentStream.forEach((document) -> {
             if (document.getOrNull() != null) {
                 var csaf = document.getOrNull().getJson();

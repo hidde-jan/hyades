@@ -28,7 +28,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 class CsafLoaderFactory {
 
     CsafLoader create() {
-        return CsafLoader.Companion.getLazyLoader();
+        var client = CsafHttpClientFactory.INSTANCE.getClient();
+        return new CsafLoader(null, client);
     }
 
 }
